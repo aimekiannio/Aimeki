@@ -15,11 +15,14 @@ st.set_page_config(page_title="aimeki - MBOSE AI Mentor", layout="wide")
 # ----------------------------------------------------
 st.markdown("""
     <style>
+    /* Pitch Black Base Background */
     .stApp {
         background-color: #000000 !important;
         color: #e0e0e0;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
+
+    /* Metallic Chrome Title */
     h1 {
         background: linear-gradient(180deg, #ffffff 0%, #d8d8d8 35%, #707070 50%, #ffffff 85%, #888888 100%);
         -webkit-background-clip: text;
@@ -30,10 +33,14 @@ st.markdown("""
         border-bottom: 1px solid #333333;
         padding-bottom: 12px;
     }
+
+    /* Pitch Black Sidebar with Sharp Chrome Border */
     section[data-testid="stSidebar"] {
         background-color: #000000 !important;
         border-right: 1px solid #444444 !important;
     }
+
+    /* Liquid Chrome Metallic Buttons */
     .stButton > button {
         background: linear-gradient(180deg, #ffffff 0%, #b0b0b0 45%, #4a4a4a 50%, #262626 85%, #888888 100%);
         color: #000000 !important;
@@ -45,21 +52,27 @@ st.markdown("""
         text-transform: uppercase;
         letter-spacing: 1.5px;
     }
+    
     .stButton > button:hover {
         background: linear-gradient(180deg, #ffffff 0%, #d5d5d5 45%, #666666 50%, #3a3a3a 85%, #aaaaaa 100%);
         box-shadow: 0 0 18px rgba(255, 255, 255, 0.6);
         transform: scale(1.01);
     }
+
+    /* High-Contrast Inputs */
     input, textarea, div[data-baseweb="select"] {
         background-color: #080808 !important;
         color: #ffffff !important;
         border: 1px solid #555555 !important;
         border-radius: 2px !important;
     }
+    
     input:focus {
         border-color: #ffffff !important;
         box-shadow: 0 0 8px rgba(255, 255, 255, 0.4) !important;
     }
+
+    /* Liquid Chrome Edge Chat Cards */
     .stChatMessage {
         background: #050505 !important;
         border: 1px solid #333333 !important;
@@ -67,6 +80,8 @@ st.markdown("""
         border-radius: 2px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
     }
+
+    /* Selectbox Dropdown Options */
     div[data-baseweb="popover"] {
         background-color: #050505 !important;
         border: 1px solid #555555 !important;
@@ -138,10 +153,10 @@ else:
 
     def get_embedding(text):
         response = client.models.embed_content(
-            model="gemini-embedding-001",
+            model="text-embedding-004",
             contents=text
         )
-        return response.embeddings[0].values
+        return response.embedding.values
 
     # ----------------------------------------------------
     # Document Upload & Vectorization
