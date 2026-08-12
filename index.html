@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nilly's VIP Sanrio Check 🎀</title>
+    <style>
+        body {
+            background-color: #ffe6f0;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+            color: #d63384;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 4px solid #ff99c8;
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(255, 153, 200, 0.4);
+            max-width: 320px;
+            text-align: center;
+            position: relative;
+        }
+
+        .bow-header {
+            font-size: 50px;
+            margin: 0;
+        }
+
+        h1 { font-size: 22px; margin: 15px 0 10px; }
+        p { color: #666; font-size: 15px; }
+
+        input {
+            padding: 10px;
+            border-radius: 15px;
+            border: 2px solid #ffb3c6;
+            text-align: center;
+            font-size: 16px;
+            outline: none;
+            width: 80%;
+            margin-bottom: 10px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            min-height: 50px;
+            position: relative;
+        }
+
+        .btn {
+            background-color: #ffb3c6;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: transform 0.15s ease;
+        }
+
+        #no-btn {
+            position: absolute;
+            background-color: #ff85a1;
+        }
+
+        #content-screen, #result, #error { display: none; }
+    </style>
+</head>
+<body>
+
+    <!-- PASSCODE SCREEN -->
+    <div class="card" id="lock-screen">
+        <div class="bow-header">🔒 🎀</div>
+        <h1>Nilly's VIP Lounge</h1>
+        <p>Enter your passcode to unlock:</p>
+        <input type="password" id="passcode" placeholder="Passcode...">
+        <br>
+        <button class="btn" onclick="checkPassword()">Unlock ✨</button>
+        <p id="error" style="color: #ff0055; font-size: 13px; margin-top: 10px;">Wrong passcode! 🐱</p>
+    </div>
+
+    <!-- MAIN PRANK SCREEN -->
+    <div class="card" id="content-screen">
+        <div class="bow-header">🎀 🐱 ✨</div>
+        <h1>Nilly's Vibe Check</h1>
+        <p id="prompt">Is Nilly officially certified maximum cute status today?</p>
+        
+        <div class="btn-container" id="button-area">
+            <button class="btn" onclick="sayYes()">100% Validated</button>
+            <button class="btn" id="no-btn" onmouseover="dodgeButton()" onclick="dodgeButton()" ontouchstart="dodgeButton()">Nah</button>
+        </div>
+
+        <div id="result" style="margin-top: 20px; font-size: 18px; color: #ff007f; font-weight: bold;">
+            💖 CERTIFIED 100% CUTE! 💖<br>
+            <span style="font-size: 14px; color: #777; font-weight: normal;">(The 'Nah' button was never an option)</span>
+        </div>
+    </div>
+
+    <script>
+        const SECRET_CODE = "4imeki";
+
+        function checkPassword() {
+            const input = document.getElementById('passcode').value;
+            if (input === SECRET_CODE) {
+                document.getElementById('lock-screen').style.display = 'none';
+                document.getElementById('content-screen').style.display = 'block';
+            } else {
+                document.getElementById('error').style.display = 'block';
+            }
+        }
+
+        function dodgeButton() {
+            const btn = document.getElementById('no-btn');
+            const x = Math.floor(Math.random() * 200) - 100;
+            const y = Math.floor(Math.random() * 200) - 100;
+            btn.style.transform = `translate(${x}px, ${y}px)`;
+        }
+
+        function sayYes() {
+            document.getElementById('prompt').style.display = 'none';
+            document.getElementById('button-area').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>

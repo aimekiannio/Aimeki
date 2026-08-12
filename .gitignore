@@ -1,0 +1,5 @@
+mbose_scratch_db/
+.env
+__pycache__/
+*.pyc
+.DS_Store
